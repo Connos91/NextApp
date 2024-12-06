@@ -26,9 +26,9 @@ const ServerForm = ({ game }: GameFormProps) => {
 
   return (
     <div className="flex flex-col justify-center border-2 border-green-500 rounded-lg p-10">
-      <Form action={action}>
+      <Form action={action} actionState={actionState}>
         <h1 className="block mb-2 text-lg font-medium mb-10">
-          Create Game on Client
+          Create Game on Server
         </h1>
         <label htmlFor="title">Title</label>
         <input
