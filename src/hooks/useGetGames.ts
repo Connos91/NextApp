@@ -1,17 +1,17 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query'
-import { fetchGames } from "../lib/api"
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { fetchGames } from "@/api/calls";
 
 export const useGetGames = () => {
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
 
   const query = useQuery({
-    queryKey: ['games'],
+    queryKey: ["games"],
     queryFn: fetchGames,
     staleTime: 60 * 1000
-  })
+  });
 
   const updateGamesCache = (newGame: any) => {
-    queryClient.setQueryData(['games'], (oldData: any[] | undefined) => {
+    queryClient.setQueryData(["games"], (oldData: any[] | undefined) => {
       if (oldData) {
         return [...oldData, newGame];
       }
@@ -21,6 +21,6 @@ export const useGetGames = () => {
 
   return {
     ...query,
-    updateGamesCache,
-  }
-}
+    updateGamesCache
+  };
+};

@@ -3,16 +3,16 @@
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import {
+  ActionState,
+  fromErrorToActionState,
+  toActionState
+} from "../utils/actionState";
 
 const upsertGameSchema = z.object({
   title: z.string().min(1).max(191),
   content: z.string().min(1).max(1024)
 });
-
-type ActionState = {
-  message: string;
-  payload?: FormData;
-};
 
 export const upsertGame = async (
   id: string | undefined,
@@ -30,10 +30,10 @@ export const upsertGame = async (
       update: data,
       create: data
     });
-    revalidatePath("./dashboard");
-
-    return { message: "Game created" };
   } catch (error) {
-    return { message: "Something went wrong", payload: formData };
+    return fromErrorToActionState(error, formData);
   }
+  revalidatePath("./dashboard");
+
+  return toActionState("Game created"); //{ message: "Game created", fieldErrors: {} };
 };

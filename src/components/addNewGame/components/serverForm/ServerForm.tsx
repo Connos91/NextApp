@@ -1,11 +1,12 @@
 "use client";
-import React, { useEffect } from "react";
-import { useRouter } from "next/navigation";
+
+import React, { useActionState, useEffect } from "react";
 import { Game } from "@prisma/client";
 import Form from "./Form";
 import SubmitButton from "@/components/features/submit";
 import { upsertGame } from "../serverForm/actions/upsertGame";
-import { useFormState } from "react-dom";
+import { EMPTY_ACTION_STATE } from "./utils/actionState";
+import { useRouter } from "next/navigation";
 
 type GameFormProps = {
   game?: Game;
@@ -14,9 +15,10 @@ type GameFormProps = {
 const ServerForm = ({ game }: GameFormProps) => {
   const router = useRouter();
 
-  const [actionState, action] = useFormState(upsertGame.bind(null, game?.id), {
-    message: ""
-  });
+  const [actionState, action] = useActionState(
+    upsertGame.bind(null, game?.id),
+    EMPTY_ACTION_STATE
+  );
 
   useEffect(() => {
     if (actionState?.message === "Game created") {
@@ -36,18 +38,26 @@ const ServerForm = ({ game }: GameFormProps) => {
           name="title"
           type="text"
           className="text-black border rounded p-2"
-          defaultValue={game?.title}
+          defaultValue={
+            (actionState?.payload?.get("title") as string) ?? game?.title
+          }
         />
-
+        <span className="text-xs text-red-500">
+          {actionState.fieldErrors?.title?.[0]}
+        </span>
         <label htmlFor="content">Content</label>
         <input
           id="content"
           name="content"
           type="textarea"
           className="text-black border rounded p-2"
-          defaultValue={game?.content}
+          defaultValue={
+            (actionState?.payload?.get("content") as string) ?? game?.content
+          }
         />
-
+        <span className="text-xs text-red-500">
+          {actionState.fieldErrors?.content?.[0]}
+        </span>
         <SubmitButton label="Create" loading="Creating ..." />
 
         {actionState.message}

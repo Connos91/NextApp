@@ -3,7 +3,6 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import Game from "./components/game";
-import GameHeader from "../../../gameHeader";
 import { useGetGames } from "@/hooks/useGetGames";
 
 const GamesContainer = () => {
@@ -14,9 +13,8 @@ const GamesContainer = () => {
 
   return (
     <div className="bg-white/10 rounded-lg p-6 mt-10">
-      <GameHeader title="Client Games" isServer={false} />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-        {games?.map((game) => (
+        {games?.map((game: any) => (
           <Game id={game?.id} key={uuidv4()} {...game} />
         ))}
       </div>

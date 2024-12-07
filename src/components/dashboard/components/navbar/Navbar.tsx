@@ -5,6 +5,7 @@ import { signOut } from "next-auth/react";
 import { useLoading } from "@/context/Context";
 import { SessionProps } from "../../SessionProps";
 import * as C from "./constants";
+import GameHeader from "@/components/gameHeader";
 
 const Navbar = ({ name }: SessionProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -36,11 +37,11 @@ const Navbar = ({ name }: SessionProps) => {
         </div>
 
         <div
-          className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${
+          className={`w-full block flex lg:flex lg:w-auto space-x-5 ${
             isMenuOpen ? "block" : "hidden"
           }`}
         >
-          <div className="flex-grow"></div>
+          <GameHeader title="+Games" />
           <button
             onClick={() => signOut()}
             disabled={isLoading}
