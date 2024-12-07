@@ -12,7 +12,7 @@ const GamesContainer = () => {
   if (error) return <div>An error occurred: {(error as Error)?.message}</div>;
 
   return (
-    <div className="bg-white/10 rounded-lg p-6 mt-10">
+    <div className="bg-white/10 rounded-lg p-6 mt-2">
       <h1 className="font-semibold text-xl tracking-tight mb-4">
         Client Games
       </h1>

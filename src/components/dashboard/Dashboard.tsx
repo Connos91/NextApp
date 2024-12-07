@@ -15,7 +15,7 @@ const Dashboard = ({ name, games }: SessionProps) => {
       <div className="flex flex-col min-h-screen">
         <Navbar name={name} />
         <main className="flex-grow p-4 mb-4">
-          <Suspense fallback={<div>Loading games...</div>}>
+          <Suspense>
             <GamesContainer />
             <GamesServerList games={games} />
           </Suspense>
