@@ -34,6 +34,5 @@ export const upsertGame = async (
     return fromErrorToActionState(error, formData);
   }
   revalidatePath("./dashboard");
-
   return toActionState("Game created"); //{ message: "Game created", fieldErrors: {} };
 };

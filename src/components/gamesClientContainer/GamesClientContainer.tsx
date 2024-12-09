@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import Game from "./components/game";
 import { useGetGames } from "@/hooks/useGetGames";
 
-const GamesContainer = () => {
+const GamesClientContainer = () => {
   const { data: games, isLoading, error } = useGetGames();
 
   if (isLoading) return <div>Loading...</div>;
@@ -18,11 +17,11 @@ const GamesContainer = () => {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
         {games?.map((game: any) => (
-          <Game id={game?.id} key={uuidv4()} {...game} />
+          <Game id={game?.id} key={game?.id} {...game} />
         ))}
       </div>
     </div>
   );
 };
 
-export default GamesContainer;
+export default GamesClientContainer;
