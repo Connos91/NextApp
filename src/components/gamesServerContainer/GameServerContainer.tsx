@@ -10,13 +10,13 @@ interface Game {
   content: string;
 }
 
-interface GamesClientListProps {
+interface GamesServerListProps {
   games: Game[];
 }
 
-const GamesServerList: React.FC<GamesClientListProps> = ({ games }) => {
+const GamesServerList: React.FC<GamesServerListProps> = ({ games }) => {
   return (
-    <div className="bg-white/10 rounded-lg p-6 mt-10">
+    <div className="bg-white/10 rounded-lg p-6 mt-8">
       <h1 className="font-semibold text-xl tracking-tight mb-4">
         Server Games
       </h1>

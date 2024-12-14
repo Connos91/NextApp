@@ -4,12 +4,12 @@ import React, { useActionState, useEffect } from "react";
 import { Game } from "@prisma/client";
 import Form from "./Form";
 import SubmitButton from "@/components/features/submit";
-import { upsertGame } from "../serverForm/actions/upsertGame";
+import { upsertGame } from "../../../actions/upsertGame";
 import { EMPTY_ACTION_STATE } from "./utils/actionState";
 import { useRouter } from "next/navigation";
 
 type GameFormProps = {
-  game?: Game;
+  game: Game | null | undefined;
 };
 
 const ServerForm = ({ game }: GameFormProps) => {

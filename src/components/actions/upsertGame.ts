@@ -7,7 +7,7 @@ import {
   ActionState,
   fromErrorToActionState,
   toActionState
-} from "../utils/actionState";
+} from "../addNewGame/components/serverForm/utils/actionState";
 
 const upsertGameSchema = z.object({
   title: z.string().min(1).max(191),

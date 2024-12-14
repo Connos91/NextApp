@@ -1,7 +1,12 @@
+import BackToDashboard from "@/components/backToDashboard";
+
 const Layout = ({ children }: { children: any }) => {
   return (
     <main>
-      <div>{children}</div>
+      <div>
+        <BackToDashboard />
+        {children}
+      </div>
     </main>
   );
 };

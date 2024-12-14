@@ -41,7 +41,7 @@ const Navbar = ({ name }: SessionProps) => {
             isMenuOpen ? "block" : "hidden"
           }`}
         >
-          <GameHeader title="+Games" />
+          <GameHeader title="+ Games" />
           <button
             onClick={() => signOut()}
             disabled={isLoading}
