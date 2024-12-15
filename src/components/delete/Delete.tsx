@@ -1,5 +1,5 @@
 import React from "react";
-import DeleteSVG from "./DeleteSVG";
+import DeleteSVG from "@/components/SVG/DeleteSVG";
 
 type deleteProps = {
   id: string | number;

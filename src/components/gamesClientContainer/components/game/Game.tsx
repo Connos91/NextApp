@@ -18,7 +18,7 @@ const Game = (props: GameProps) => {
       if (confirm("Are you sure you want to delete?")) {
         setIsDeleting(true);
         try {
-          await deleteGame.mutateAsync(id as string);
+          await deleteGame.mutateAsync(id);
         } catch (error) {
           console.error("Failed to delete game:", error);
         } finally {

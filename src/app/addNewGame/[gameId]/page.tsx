@@ -12,7 +12,7 @@ const PageEditPage = async ({ params }: GameEditPageProps) => {
   const game = await getGame(gameId);
 
   return (
-    <div className="flex-1 flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center py-2 max-w-screen-md mx-auto space-y-10">
       <ServerForm game={game} />
     </div>
   );

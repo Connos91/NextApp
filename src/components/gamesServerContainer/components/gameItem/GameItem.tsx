@@ -19,7 +19,7 @@ const GameItem = ({ game }: GameItemProps) => {
         </div>
       </div>
       <div className="border-t border-white/5 p-4 text-right space-x-2">
-        <Edit gameId={game?.id} />
+        <Edit gameId={game?.id} isServer />
         <Delete id={game?.id} handleDeleteGame={handleDeleteGame} />
       </div>
     </div>
