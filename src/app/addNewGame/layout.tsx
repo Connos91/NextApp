@@ -1,6 +1,6 @@
 import BackToDashboard from "@/components/backToDashboard";
 
-const Layout = ({ children }: { children: any }) => {
+const Layout = async ({ children }: { children: any }) => {
   return (
     <main>
       <div>

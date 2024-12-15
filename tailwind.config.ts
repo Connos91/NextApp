@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       borderColor: {
-        "custom-rgb": "rgb(111 125 198 / 1)"
+        "custom-rgb": "rgb(255 255 255 / 0.15)"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

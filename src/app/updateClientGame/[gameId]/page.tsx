@@ -1,5 +1,6 @@
 import { fetchGameById } from "@/api/calls";
 import ClientForm from "@/components/addNewGame/components/clientForm";
+import { loginIsRequiredServer } from "@/utils/login";
 
 type GameEditPageProps = {
   params: Promise<{
@@ -8,6 +9,8 @@ type GameEditPageProps = {
 };
 
 const PageEditClientPage = async ({ params }: GameEditPageProps) => {
+  await loginIsRequiredServer();
+
   const { gameId } = await params;
   const { id, title, category } = await fetchGameById(gameId);
   const game = { id, title, category };

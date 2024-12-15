@@ -1,5 +1,6 @@
 "use client";
 
+import GameTitle from "../gameTitle";
 import GameItem from "./components/gameItem";
 
 interface Game {
@@ -17,9 +18,8 @@ interface GamesServerListProps {
 const GamesServerList: React.FC<GamesServerListProps> = ({ games }) => {
   return (
     <div className="bg-white/10 rounded-lg p-6 mt-8">
-      <h1 className="font-semibold text-xl tracking-tight mb-4">
-        Server Games
-      </h1>
+      <GameTitle title="Server Games" />
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
         {games?.map((game) => (
           <GameItem key={game.id} game={game} />

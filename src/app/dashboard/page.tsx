@@ -1,7 +1,7 @@
-import { auth } from "@/lib/auth";
 import Dashboard from "@/components/dashboard";
 import { loginIsRequiredServer } from "@/utils/login";
 import { getGames } from "@/components/queries/getGames";
+import { auth } from "@/lib/auth";
 
 const Page = async () => {
   await loginIsRequiredServer();

@@ -6,11 +6,11 @@ export const loginIsRequiredServer = async () => {
     const session = await auth();
 
     if (!session) {
-      return redirect("/");
+      return redirect("/"); // Make sure redirect usage is appropriate for the context
     }
   } catch (error) {
     console.error("Error fetching session:", error);
-
-    return redirect("/");
+    // Handle the redirect error properly
+    redirect("/");
   }
 };

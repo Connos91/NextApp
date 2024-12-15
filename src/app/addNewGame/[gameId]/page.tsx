@@ -1,5 +1,6 @@
 import { getGame } from "@/components/queries/getGame";
 import ServerForm from "@/components/addNewGame/components/serverForm";
+import { loginIsRequiredServer } from "@/utils/login";
 
 type GameEditPageProps = {
   params: Promise<{
@@ -8,6 +9,8 @@ type GameEditPageProps = {
 };
 
 const PageEditPage = async ({ params }: GameEditPageProps) => {
+  await loginIsRequiredServer();
+
   const { gameId } = await params;
   const game = await getGame(gameId);
 
