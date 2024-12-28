@@ -27,19 +27,19 @@ export const { auth, handlers } = NextAuth({
         }
       }
       return true;
-    },
-    async session({ session }) {
-      console.log(session);
-      if (session?.user) {
-        try {
-          const validatedUser = UserProviderSchema.parse(session.user);
-
-          console.log("validatedUser:", validatedUser);
-        } catch (error) {
-          console.error("Session user data validation failed:", error);
-        }
-      }
-      return session;
     }
+    // async session({ session }) {
+    //   console.log(session);
+    //   if (session?.user) {
+    //     try {
+    //       const validatedUser = UserProviderSchema.parse(session.user);
+
+    //       console.log("validatedUser:", validatedUser);
+    //     } catch (error) {
+    //       console.error("Session user data validation failed:", error);
+    //     }
+    //   }
+    //   return session;
+    // }
   }
 });

@@ -8,7 +8,7 @@ interface Game {
   createdAt: Date;
   updatedAt: Date;
   title: string;
-  content: string;
+  content: string | null;
 }
 
 interface GamesServerListProps {

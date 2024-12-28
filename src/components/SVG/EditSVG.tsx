@@ -5,15 +5,11 @@ const EditSVG = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="orange"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="w-6 h-6"
+      width="24"
+      height="24"
+      fill="orange"
     >
-      <path d="M12 20h9" />
-      <path d="M16.5 3.5l4 4L7 21H3v-4L16.5 3.5z" />
+      <path d="M3 17.25V21h3.75l11-11-3.75-3.75-11 11zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
     </svg>
   );
 };

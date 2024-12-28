@@ -7,7 +7,7 @@ import { ContextProvider } from "@/context/Context";
 import Footer from "../footer";
 import GamesServerList from "../gamesServerContainer";
 
-const GamesClientContainer = lazy(() => import("../gamesClientContainer"));
+// const GamesClientContainer = lazy(() => import("../gamesClientContainer"));
 
 const Dashboard = ({ name, games }: SessionProps) => {
   return (
@@ -16,7 +16,7 @@ const Dashboard = ({ name, games }: SessionProps) => {
         <Navbar name={name} />
         <main className="flex-grow p-4 mb-4">
           <Suspense>
-            <GamesClientContainer />
+            {/* <GamesClientContainer /> */}
             <GamesServerList games={games} />
           </Suspense>
         </main>

@@ -1,20 +1,30 @@
-import React, { createContext, useState, useContext } from "react";
+"use client";
 
-export const Context = createContext<{
-  isLoading: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}>({ isLoading: false, setIsLoading: () => {} });
+import React, { createContext, useContext, useState } from "react";
 
-export const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  const [isLoading, setIsLoading] = useState(false);
+interface LoadingContextType {
+  loadingMap: Record<string, boolean>;
+  setLoadingMap: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+}
 
-  return (
-    <Context.Provider value={{ isLoading, setIsLoading }}>
-      {children}
-    </Context.Provider>
-  );
+const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
+
+export const useLoading = () => {
+  const context = useContext(LoadingContext);
+  if (!context) {
+    throw new Error("useLoading must be used within a LoadingProvider");
+  }
+  return context;
 };
 
-export const useLoading = () => useContext(Context);
+export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({
+  children
+}) => {
+  const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>({});
+
+  return (
+    <LoadingContext.Provider value={{ loadingMap, setLoadingMap }}>
+      {children}
+    </LoadingContext.Provider>
+  );
+};

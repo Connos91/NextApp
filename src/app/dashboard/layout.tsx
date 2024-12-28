@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 const Layout = ({ children }: { children: any }) => {
   return (
     <main className="flex w-full justify-center items-center">

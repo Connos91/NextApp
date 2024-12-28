@@ -3,14 +3,14 @@
 import React, { useState, useCallback } from "react";
 import { GameProps } from "./GameProps";
 import { useDeleteGame } from "@/hooks/useDeleteGame";
-import { useLoading } from "@/context/Context";
+//import { useLoading } from "@/context/Context";
 import Delete from "@/components/delete";
 import Edit from "@/components/edit";
 import GameContent from "@/components/gameContent";
 
 const Game = (props: GameProps) => {
   const [isDeleting, setIsDeleting] = useState(false);
-  const { isLoading } = useLoading();
+  //const { isLoading } = useLoading();
 
   const deleteGame = useDeleteGame();
 
@@ -37,7 +37,7 @@ const Game = (props: GameProps) => {
         <Edit gameId={props?.id} />
         <Delete
           id={props?.id}
-          isLoading={isLoading}
+          // isLoading={isLoading}
           isDeleting={isDeleting}
           handleDeleteGame={handleDeleteGame}
         />

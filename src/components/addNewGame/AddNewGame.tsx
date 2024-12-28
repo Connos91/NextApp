@@ -1,3 +1,5 @@
+"use client";
+
 import ServerForm from "@/components/addNewGame/components/serverForm";
 
 const AddNewGame = () => {

@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useLoading } from "@/context/Context";
 import SpinnerIcon from "./SpinnerIcon";
 
 type headerProps = {
@@ -10,27 +9,23 @@ type headerProps = {
 };
 
 const GameHeader = ({ title }: headerProps) => {
+  const [mode, setMode] = useState(false);
   const router = useRouter();
-  const { isLoading, setIsLoading } = useLoading();
 
-  const handleAddGame = useCallback(() => setIsLoading(true), [setIsLoading]);
-
-  useEffect(() => {
-    if (isLoading) {
-      setTimeout(() => {
-        router.push("/addNewGame");
-      }, 500);
-    }
-  }, [isLoading, router, setIsLoading]);
+  const handleAddGame = useCallback(() => {
+    setMode(true);
+    router.push("/addNewGame");
+  }, [router]);
 
   return (
     <button
       className={`${
-        isLoading ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
-      }font-semibold text-white inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white mt-4 lg:mt-0`}
+        mode ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
+      } font-semibold text-white inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white mt-4 lg:mt-0`}
       onClick={handleAddGame}
+      disabled={mode}
     >
-      <SpinnerIcon title={title} isLoading={isLoading} />
+      <SpinnerIcon title={title} isLoading={mode} />
     </button>
   );
 };
