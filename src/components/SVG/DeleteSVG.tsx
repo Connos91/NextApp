@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 
 type deleteSVGProps = {
   isLoading?: boolean;
@@ -27,4 +27,4 @@ const DeleteSVG = ({ isLoading }: deleteSVGProps) => {
   );
 };
 
-export default DeleteSVG;
+export default memo(DeleteSVG);

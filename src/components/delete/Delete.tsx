@@ -28,7 +28,7 @@ const Delete = ({
       {isDeleting ? (
         <p className="text-red-500">Deleting...</p>
       ) : (
-        <DeleteSVG isLoading={isDeleting} />
+        <DeleteSVG isLoading={isLoading} />
       )}
     </button>
   );

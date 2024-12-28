@@ -3,8 +3,8 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface LoadingContextType {
-  loadingMap: Record<string, boolean>;
-  setLoadingMap: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+  loadingMap?: Record<string, boolean>;
+  setLoadingMap?: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
 }
 
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);

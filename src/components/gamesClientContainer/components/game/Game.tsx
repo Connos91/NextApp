@@ -38,7 +38,6 @@ const Game = (props: GameProps) => {
         <Delete
           id={props?.id}
           // isLoading={isLoading}
-          isDeleting={isDeleting}
           handleDeleteGame={handleDeleteGame}
         />
       </div>
