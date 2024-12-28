@@ -25,10 +25,10 @@ const Edit = ({ gameId, isLoading }: GameFormProps) => {
         }));
       }
 
-      // setTimeout(() => {
-      //   const url = U.href(gameId);
-      //   router.push(url);
-      // }, 300);
+      setTimeout(() => {
+        const url = U.href(gameId);
+        router.push(url);
+      }, 300);
     },
     [gameId, router, setLoadingMap]
   );
