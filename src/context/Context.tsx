@@ -3,8 +3,10 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface LoadingContextType {
-  loadingMap?: Record<string, boolean>;
-  setLoadingMap?: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+  loadingMap?: Record<string, { isEdit: boolean; isDelete: boolean }>;
+  setLoadingMap?: React.Dispatch<
+    React.SetStateAction<Record<string, { isEdit: boolean; isDelete: boolean }>>
+  >;
 }
 
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
@@ -20,7 +22,9 @@ export const useLoading = () => {
 export const LoadingProvider: React.FC<{ children: React.ReactNode }> = ({
   children
 }) => {
-  const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>({});
+  const [loadingMap, setLoadingMap] = useState<
+    Record<string, { isEdit: boolean; isDelete: boolean }>
+  >({});
 
   return (
     <LoadingContext.Provider value={{ loadingMap, setLoadingMap }}>

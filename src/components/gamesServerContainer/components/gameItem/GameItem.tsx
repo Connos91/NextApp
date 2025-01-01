@@ -13,20 +13,12 @@ const GameItem = ({ game }: GameItemProps) => {
   const { loadingMap } = useLoading();
   const isAnyLoading = U.checkLoading(loadingMap || {});
 
-  const handleDeleteGame = () => {
-    alert("Delete");
-  };
-
   return (
     <div className="bg-black/60 to-white/5 rounded-lg">
       <GameContent title={game?.title} content={game?.content} />
       <div className="w-full flex justify-end border-t border-custom-rgb p-4 space-x-2">
         <Edit gameId={game?.id} isLoading={isAnyLoading} />
-        <Delete
-          id={game?.id}
-          handleDeleteGame={handleDeleteGame}
-          isLoading={isAnyLoading}
-        />
+        <Delete id={game?.id} isLoading={isAnyLoading} />
       </div>
     </div>
   );

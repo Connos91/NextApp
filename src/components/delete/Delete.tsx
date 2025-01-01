@@ -1,21 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
 import DeleteSVG from "@/components/SVG/DeleteSVG";
+import { useLoading } from "@/context/Context";
+import Loading from "../commonComponents/spinner/Loading";
 
 type deleteProps = {
   id: string | number;
   isLoading?: boolean;
-  isDeleting?: boolean;
-  handleDeleteGame: (id: string | number) => void;
+  flag?: string | undefined;
 };
 
-const Delete = ({
-  id,
-  isLoading,
-  isDeleting,
-  handleDeleteGame
-}: deleteProps) => {
+const Delete = ({ id, isLoading }: deleteProps) => {
+  const { loadingMap, setLoadingMap } = useLoading();
+  const deleteLoading = loadingMap?.[id]?.isDelete || false;
+
+  const handleDeleteGame = useCallback(
+    (id: number | string) => {
+      if (setLoadingMap) {
+        setLoadingMap((prevMap) => ({
+          ...prevMap,
+          [id]: {
+            isEdit: false,
+            isDelete: true
+          }
+        }));
+      }
+
+      alert("Delete:" + id);
+    },
+    [setLoadingMap]
+  );
+
   return (
     <button
       onClick={() => handleDeleteGame(id)}
@@ -25,8 +41,8 @@ const Delete = ({
       aria-label="Delete game"
       disabled={isLoading}
     >
-      {isDeleting ? (
-        <p className="text-red-500">Deleting...</p>
+      {deleteLoading ? (
+        <Loading flag="delete" />
       ) : (
         <DeleteSVG isLoading={isLoading} />
       )}

@@ -3,6 +3,12 @@
 import React from "react";
 import "./Spinner.css";
 
-const Loading = () => <div className="spinner"></div>;
+type SpinnerProps = {
+  flag: "edit" | "delete";
+};
+
+const Loading = ({ flag }: SpinnerProps) => (
+  <div className={`spinner spinner-${flag}`}></div>
+);
 
 export default Loading;

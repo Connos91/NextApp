@@ -14,6 +14,7 @@ import { useLoading } from "@/context/Context";
 const Edit = ({ gameId, isLoading }: GameFormProps) => {
   const router = useRouter();
   const { loadingMap, setLoadingMap } = useLoading();
+  const editLoading = loadingMap?.[gameId]?.isEdit || false;
 
   const handleEditClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -21,7 +22,10 @@ const Edit = ({ gameId, isLoading }: GameFormProps) => {
       if (setLoadingMap) {
         setLoadingMap((prevMap) => ({
           ...prevMap,
-          [gameId]: true
+          [gameId]: {
+            isEdit: true,
+            isDelete: false
+          }
         }));
       }
 
@@ -33,12 +37,10 @@ const Edit = ({ gameId, isLoading }: GameFormProps) => {
     [gameId, router, setLoadingMap]
   );
 
-  const isEditLoading = loadingMap ? !!loadingMap[gameId] : false;
-
   return (
     <>
-      {isEditLoading ? (
-        <Loading />
+      {editLoading ? (
+        <Loading flag="edit" />
       ) : (
         <CustomBtn
           onClick={handleEditClick}

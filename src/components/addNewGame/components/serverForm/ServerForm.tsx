@@ -7,6 +7,7 @@ import SubmitButton from "@/components/features/submit";
 import { upsertGame } from "../../../actions/upsertGame";
 import { EMPTY_ACTION_STATE } from "./utils/actionState";
 import { useRouter } from "next/navigation";
+import { useLoading } from "@/context/Context";
 
 type GameFormProps = {
   game: Game | null | undefined;
@@ -14,6 +15,8 @@ type GameFormProps = {
 
 const ServerForm = ({ game }: GameFormProps) => {
   const router = useRouter();
+  const { loadingMap } = useLoading();
+  const isObjectEmpty = loadingMap && Object.keys(loadingMap).length === 0;
 
   const [actionState, action] = useActionState(
     upsertGame.bind(null, game?.id),
@@ -58,7 +61,10 @@ const ServerForm = ({ game }: GameFormProps) => {
         <span className="text-xs text-red-500">
           {actionState.fieldErrors?.content?.[0]}
         </span>
-        <SubmitButton label="Create" loading="Creating ..." />
+        <SubmitButton
+          label={isObjectEmpty ? "Create" : "Edit"}
+          loading="Creating ..."
+        />
 
         {actionState.message}
       </Form>

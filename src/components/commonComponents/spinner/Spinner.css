@@ -1,13 +1,24 @@
 .spinner {
   width: 24px;
   height: 24px;
-  border: 5px solid #f3f3f3;
-  border-top-color: rgb(212, 175, 64);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
 
+.spinner-edit {
+  border: 5px solid #f3f3f3;
+  border-top-color: rgb(212, 175, 64);
+}
+
+.spinner-delete {
+  border: 5px solid #f3f3f3;
+  border-top-color: rgb(91, 8, 24);
+}
+
 @keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
   to {
     transform: rotate(360deg);
   }
